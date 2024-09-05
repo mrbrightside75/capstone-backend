@@ -31,6 +31,7 @@ const Case = (db) => {
 				"Lord",
 				"Lady",
 			],
+			allowNull: true,
 		},
 		suffix: {
 			type: DataTypes.ENUM,
@@ -47,6 +48,7 @@ const Case = (db) => {
 				"Esq.",
 				"CPA",
 			],
+			allowNull: true,
 		},
 		dateofbirth: DataTypes.DATE,
 		gestationalage: {
@@ -129,3 +131,4 @@ const Case = (db) => {
 
 // F7 Export the function so it can be accessed in db.js
 export default Case;
+// Test

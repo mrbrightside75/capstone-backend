@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize";
 import CaseModel from "./Case.js";
+import seedData from "./seedData.json" with {type: "json"};
 
 const db = new Sequelize("postgres://localhost:5432/capstone");
 const Case = CaseModel(db);
@@ -8,7 +9,30 @@ const connectToDB = async () => {
 	try {
 		await db.authenticate();
 		console.log("Connected to the DB");
-		db.sync(); //{ alter: true }
+		await db.sync(); // Sync the database (adjust with `alter: true` if needed)
+
+		// Loop through the seed data
+		for (const eachSeed of seedData) {
+			// Check if the case already exists in the database by first name, last name, and DOB
+			const existingCase = await Case.findOne({
+				where: {
+					firstname: eachSeed.firstname,
+					lastname: eachSeed.lastname,
+					dateofbirth: eachSeed.dateofbirth
+				}
+			});
+
+			if (existingCase) {
+				// If the case already exists, log a message and skip insertion
+				console.log(
+					`Skipping case: ${eachSeed.firstname} ${eachSeed.lastname} - already exists in the database.`
+				);
+			} else {
+				// If the case does not exist, create a new case
+				await Case.create(eachSeed);
+				console.log(`Added case: ${eachSeed.firstname} ${eachSeed.lastname}`);
+			}
+		}
 	} catch (error) {
 		console.error(error);
 		console.error("DB ISSUE! EVERYONE PANIC!");
