@@ -12,13 +12,35 @@ server.get("/", (req, res) => {
 
 server.post("/cases", async (req, res) => {
 	try {
-		const { firstname, lastname, dateofbirth } = req.body;
-
-		// Create a new case in the database
-		const newCase = await Case.create({
+		const {
 			firstname,
 			lastname,
+			prefix,
+			suffix,
 			dateofbirth,
+			gestationalage,
+			ethnicity,
+			race,
+			address,
+			language,
+			schooldistrict,
+		} = req.body;
+		// Create a new case in the database
+		const newCase = await Case.create({
+			// firstname,
+			// lastname,
+			// dateofbirth,
+			firstname,
+			lastname,
+			prefix,
+			suffix,
+			dateofbirth,
+			gestationalage,
+			ethnicity,
+			race,
+			address,
+			language,
+			schooldistrict,
 		});
 
 		// Send a success response
@@ -32,6 +54,16 @@ server.post("/cases", async (req, res) => {
 server.get("/cases", async (req, res) => {
 	try {
 		const allCases = await Case.findAll(); // Fetch all cases from the database
+		res.status(200).json(allCases); // Send them back as JSON
+	} catch (error) {
+		console.error("Error fetching cases:", error);
+		res.status(500).json({ error: "Internal server error" });
+	}
+});
+
+server.get("/cases/:id", async (req, res) => {
+	try {
+		const allCases = await Case.findByPk(req.params.id); // Fetch all cases from the database
 		res.status(200).json(allCases); // Send them back as JSON
 	} catch (error) {
 		console.error("Error fetching cases:", error);

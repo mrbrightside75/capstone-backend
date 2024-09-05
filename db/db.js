@@ -8,7 +8,7 @@ const connectToDB = async () => {
 	try {
 		await db.authenticate();
 		console.log("Connected to the DB");
-		db.sync();
+		db.sync(); //{ alter: true }
 	} catch (error) {
 		console.error(error);
 		console.error("DB ISSUE! EVERYONE PANIC!");
