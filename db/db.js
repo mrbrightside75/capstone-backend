@@ -2,7 +2,27 @@ import { Sequelize } from "sequelize";
 import CaseModel from "./Case.js";
 import seedData from "./seedData.json" with {type: "json"};
 
-const db = new Sequelize("postgres://localhost:5432/capstone");
+// process.env.DATABASE_URL
+/*
+
+1. process.env.DATABASE_URL === postgres://postgres:i5L9jcOJxzSUQlO@capstone-backend-little-water-8484-db.flycast:5432
+2. DATABASE_URL === undefined
+
+
+*/
+
+
+let db;
+if (process.env.DATABASE_URL === undefined) {
+    console.log("Connected locally!");
+    db = new Sequelize("postgres://localhost:5432/capstone", {
+        logging: false,
+    }); 
+} else {
+    db = new Sequelize(process.env.DATABASE_URL, {
+        logging: false,
+    });
+}
 const Case = CaseModel(db);
 
 const connectToDB = async () => {
@@ -38,6 +58,6 @@ const connectToDB = async () => {
 		console.error("DB ISSUE! EVERYONE PANIC!");
 	}
 };
-connectToDB();
+await connectToDB();
 
 export { db, Case };

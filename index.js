@@ -71,6 +71,6 @@ server.get("/cases/:id", async (req, res) => {
 	}
 });
 
-server.listen(3001, () => {
+server.listen(3001, "0.0.0.0", () => {
 	console.log("Server is listening for requests");
 });
