@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize";
 import CaseModel from "./Case.js";
+import ReferralModel from "./Referral.js";
 import seedData from "./seedData.json" with {type: "json"};
 
 // process.env.DATABASE_URL
@@ -24,12 +25,16 @@ if (process.env.DATABASE_URL === undefined) {
     });
 }
 const Case = CaseModel(db);
+const Referral = ReferralModel(db);
+
+Case.hasMany(Referral, { foreignKey: "caseId", onDelete: "CASCADE" });
+Referral.belongsTo(Case, { foreignKey: "caseId" });
 
 const connectToDB = async () => {
 	try {
 		await db.authenticate();
 		console.log("Connected to the DB");
-		await db.sync(); // Sync the database (adjust with `alter: true` if needed)
+		await db.sync(); // Sync the database (adjust with `{alter: true}` if needed)
 
 		// Loop through the seed data
 		for (const eachSeed of seedData) {
@@ -60,4 +65,4 @@ const connectToDB = async () => {
 };
 await connectToDB();
 
-export { db, Case };
+export { db, Case, Referral};

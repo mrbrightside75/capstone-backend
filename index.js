@@ -91,6 +91,32 @@ server.post("/cases", async (req, res) => {
 	}
 });
 
+server.post("/referrals", async (req, res) => {
+	try {
+		const { referralDate, referralAgency, referralReason, caseId } =
+			req.body;
+
+		// Ensure the case exists before creating the referral
+		const existingCase = await Case.findByPk(caseId);
+
+		if (!existingCase) {
+			return res.status(404).json({ error: "Case not found" });
+		}
+
+		const newReferral = await Referral.create({
+			referralDate,
+			referralAgency,
+			referralReason,
+			caseId,
+		});
+
+		res.status(201).json(newReferral);
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ error: "Internal server error" });
+	}
+});
+
 server.get("/cases", async (req, res) => {
 	try {
 		const allCases = await Case.findAll(); // Fetch all cases from the database
