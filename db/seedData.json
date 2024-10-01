@@ -10,7 +10,8 @@
 		"race": "White",
 		"address": "123 Main St, Syracuse, NY",
 		"language": "English",
-		"schooldistrict": "Syracuse City School District"
+		"schooldistrict": "Syracuse City School District",
+		"status": "Referral"
 	},
 	{
 		"firstname": "Jane",
@@ -23,7 +24,8 @@
 		"race": "Asian",
 		"address": "456 Oak St, Liverpool, NY",
 		"language": "Spanish",
-		"schooldistrict": "Liverpool Central School District"
+		"schooldistrict": "Liverpool Central School District",
+		"status": "Awaiting Validation"
 	},
 	{
 		"firstname": "Emily",
@@ -36,7 +38,8 @@
 		"race": "Black or African American",
 		"address": "789 Pine St, Baldwinsville, NY",
 		"language": "French",
-		"schooldistrict": "Baldwinsville Central School District"
+		"schooldistrict": "Baldwinsville Central School District",
+		"status": "Validated"
 	},
 	{
 		"firstname": "Michael",
@@ -49,7 +52,8 @@
 		"race": "Native Hawaiian or Other Pacific Islander",
 		"address": "101 Maple Ave, Fayetteville, NY",
 		"language": "German",
-		"schooldistrict": "Fayetteville-Manlius Central School District"
+		"schooldistrict": "Fayetteville-Manlius Central School District",
+		"status": "Assigned"
 	},
 	{
 		"firstname": "Sophia",
@@ -62,7 +66,8 @@
 		"race": "American Indian or Alaska Native",
 		"address": "202 Birch St, East Syracuse, NY",
 		"language": "Chinese (Mandarin, Cantonese)",
-		"schooldistrict": "East Syracuse Minoa Central School District"
+		"schooldistrict": "East Syracuse Minoa Central School District",
+		"status": "Active"
 	},
 	{
 		"firstname": "Robert",
@@ -75,7 +80,8 @@
 		"race": "White",
 		"address": "303 Elm St, North Syracuse, NY",
 		"language": "Italian",
-		"schooldistrict": "North Syracuse Central School District"
+		"schooldistrict": "North Syracuse Central School District",
+		"status": "Awaiting Closure"
 	},
 	{
 		"firstname": "Olivia",
@@ -88,7 +94,8 @@
 		"race": "Asian",
 		"address": "404 Cedar St, Solvay, NY",
 		"language": "Vietnamese",
-		"schooldistrict": "Solvay Union Free School District"
+		"schooldistrict": "Solvay Union Free School District",
+		"status": "Inactive"
 	},
 	{
 		"firstname": "William",
@@ -101,7 +108,8 @@
 		"race": "Black or African American",
 		"address": "505 Walnut St, Tully, NY",
 		"language": "Swahili",
-		"schooldistrict": "Tully Central School District"
+		"schooldistrict": "Tully Central School District",
+		"status": "Referral"
 	},
 	{
 		"firstname": "Charlotte",
@@ -114,7 +122,8 @@
 		"race": "White",
 		"address": "606 Chestnut St, West Genesee, NY",
 		"language": "Japanese",
-		"schooldistrict": "West Genesee Central School District"
+		"schooldistrict": "West Genesee Central School District",
+		"status": "Awaiting Validation"
 	},
 	{
 		"firstname": "James",
@@ -127,7 +136,8 @@
 		"race": "Native Hawaiian or Other Pacific Islander",
 		"address": "707 Spruce St, Westhill, NY",
 		"language": "Arabic",
-		"schooldistrict": "Westhill Central School District"
+		"schooldistrict": "Westhill Central School District",
+		"status": "Validated"
 	},
 	{
 		"firstname": "Ava",
@@ -140,7 +150,8 @@
 		"race": "White",
 		"address": "14 Appleton St, Syracuse, NY",
 		"language": "English",
-		"schooldistrict": "Westhill Central School District"
+		"schooldistrict": "Westhill Central School District",
+		"status": "Active"
 	},
 	{
 		"firstname": "Liam",
@@ -153,7 +164,8 @@
 		"race": "Black or African American",
 		"address": "91 Elm St, East Syracuse, NY",
 		"language": "Spanish",
-		"schooldistrict": "East Syracuse Minoa Central School District"
+		"schooldistrict": "East Syracuse Minoa Central School District",
+		"status": "Assigned"
 	},
 	{
 		"firstname": "Emily",
@@ -166,7 +178,8 @@
 		"race": "White",
 		"address": "44 Maple Ave, Syracuse, NY",
 		"language": "French",
-		"schooldistrict": "Fayetteville-Manlius Central School District"
+		"schooldistrict": "Fayetteville-Manlius Central School District",
+		"status": "Referral"
 	},
 	{
 		"firstname": "Noah",
@@ -179,266 +192,7 @@
 		"race": "Asian",
 		"address": "17 Oak St, Liverpool, NY",
 		"language": "Tagalog",
-		"schooldistrict": "Liverpool Central School District"
-	},
-	{
-		"firstname": "Sophia",
-		"lastname": "Lewis",
-		"prefix": "Ms.",
-		"suffix": "III",
-		"dateofbirth": "2005-12-07",
-		"gestationalage": "39 weeks",
-		"ethnicity": "Not Hispanic or Latino",
-		"race": "American Indian or Alaska Native",
-		"address": "22 Birch Ave, Skaneateles, NY",
-		"language": "Chinese (Mandarin, Cantonese)",
-		"schooldistrict": "Skaneateles Central School District"
-	},
-	{
-		"firstname": "Lucas",
-		"lastname": "Hall",
-		"prefix": "Mr.",
-		"suffix": null,
-		"dateofbirth": "2015-01-18",
-		"gestationalage": "35 weeks",
-		"ethnicity": "Not Hispanic or Latino",
-		"race": "Native Hawaiian or Other Pacific Islander",
-		"address": "5 Pine St, Jordan, NY",
-		"language": "Russian",
-		"schooldistrict": "Jordan-Elbridge Central School District"
-	},
-	{
-		"firstname": "Isabella",
-		"lastname": "Walker",
-		"prefix": "Miss",
-		"suffix": null,
-		"dateofbirth": "1998-06-21",
-		"gestationalage": "40 weeks",
-		"ethnicity": "Hispanic or Latino",
-		"race": "White",
-		"address": "39 Oakwood Rd, Fabius, NY",
-		"language": "Portuguese",
-		"schooldistrict": "Fabius-Pompey Central School District"
-	},
-	{
-		"firstname": "Mason",
-		"lastname": "Anderson",
-		"prefix": "Mr.",
-		"suffix": "IV",
-		"dateofbirth": "2001-04-11",
-		"gestationalage": "38 weeks",
-		"ethnicity": "Not Hispanic or Latino",
-		"race": "Black or African American",
-		"address": "51 Cedar Ave, Lafayette, NY",
-		"language": "Arabic",
-		"schooldistrict": "LaFayette Central School District"
-	},
-	{
-		"firstname": "Mia",
-		"lastname": "Garcia",
-		"prefix": "Ms.",
-		"suffix": null,
-		"dateofbirth": "1999-02-23",
-		"gestationalage": "37 weeks",
-		"ethnicity": "Hispanic or Latino",
-		"race": "White",
-		"address": "32 Sycamore St, Marcellus, NY",
-		"language": "Urdu",
-		"schooldistrict": "Marcellus Central School District"
-	},
-	{
-		"firstname": "Jacob",
-		"lastname": "Harris",
-		"prefix": "Mr.",
-		"suffix": null,
-		"dateofbirth": "2013-07-19",
-		"gestationalage": "39 weeks",
-		"ethnicity": "Not Hispanic or Latino",
-		"race": "Asian",
-		"address": "76 Elmwood Ave, North Syracuse, NY",
-		"language": "Japanese",
-		"schooldistrict": "North Syracuse Central School District"
-	},
-	{
-		"firstname": "Ethan",
-		"lastname": "Martinez",
-		"prefix": "Mr.",
-		"suffix": null,
-		"dateofbirth": "2008-11-02",
-		"gestationalage": "41 weeks",
-		"ethnicity": "Hispanic or Latino",
-		"race": "White",
-		"address": "88 Chestnut St, Syracuse, NY",
-		"language": "Italian",
-		"schooldistrict": "Syracuse City School District"
-	},
-	{
-		"firstname": "Ella",
-		"lastname": "Young",
-		"prefix": "Miss",
-		"suffix": null,
-		"dateofbirth": "2017-03-16",
-		"gestationalage": "40 weeks",
-		"ethnicity": "Not Hispanic or Latino",
-		"race": "Black or African American",
-		"address": "60 Pine Ave, Tully, NY",
-		"language": "Swahili",
-		"schooldistrict": "Tully Central School District"
-	},
-	{
-		"firstname": "Oliver",
-		"lastname": "Bennett",
-		"prefix": "Mr.",
-		"suffix": "III",
-		"dateofbirth": "2004-05-17",
-		"gestationalage": "39 weeks",
-		"ethnicity": "Not Hispanic or Latino",
-		"race": "White",
-		"address": "123 Pine Lane, Baldwinsville, NY",
-		"language": "English",
-		"schooldistrict": "Baldwinsville Central School District"
-	},
-	{
-		"firstname": "Amelia",
-		"lastname": "Jenkins",
-		"prefix": "Ms.",
-		"suffix": null,
-		"dateofbirth": "2011-10-24",
-		"gestationalage": "40 weeks",
-		"ethnicity": "Hispanic or Latino",
-		"race": "Asian",
-		"address": "456 Oak Road, Fayetteville, NY",
-		"language": "Spanish",
-		"schooldistrict": "Fayetteville-Manlius Central School District"
-	},
-	{
-		"firstname": "James",
-		"lastname": "Perez",
-		"prefix": "Mr.",
-		"suffix": "Jr.",
-		"dateofbirth": "2007-12-19",
-		"gestationalage": "37 weeks",
-		"ethnicity": "Not Hispanic or Latino",
-		"race": "Black or African American",
-		"address": "789 Elm St, Liverpool, NY",
-		"language": "Portuguese",
-		"schooldistrict": "Liverpool Central School District"
-	},
-	{
-		"firstname": "Charlotte",
-		"lastname": "Robinson",
-		"prefix": "Mrs.",
-		"suffix": "II",
-		"dateofbirth": "1996-07-11",
-		"gestationalage": "41 weeks",
-		"ethnicity": "Hispanic or Latino",
-		"race": "White",
-		"address": "101 Birchwood Dr, East Syracuse, NY",
-		"language": "French",
-		"schooldistrict": "East Syracuse Minoa Central School District"
-	},
-	{
-		"firstname": "William",
-		"lastname": "Gray",
-		"prefix": "Mr.",
-		"suffix": null,
-		"dateofbirth": "2009-03-02",
-		"gestationalage": "36 weeks",
-		"ethnicity": "Not Hispanic or Latino",
-		"race": "American Indian or Alaska Native",
-		"address": "202 Maple Ave, Skaneateles, NY",
-		"language": "Tagalog",
-		"schooldistrict": "Skaneateles Central School District"
-	},
-	{
-		"firstname": "Sophia",
-		"lastname": "Moore",
-		"prefix": "Ms.",
-		"suffix": "Sr.",
-		"dateofbirth": "1994-08-15",
-		"gestationalage": "40 weeks",
-		"ethnicity": "Not Hispanic or Latino",
-		"race": "White",
-		"address": "303 Spruce St, Jordan, NY",
-		"language": "Russian",
-		"schooldistrict": "Jordan-Elbridge Central School District"
-	},
-	{
-		"firstname": "Henry",
-		"lastname": "Lee",
-		"prefix": "Dr.",
-		"suffix": null,
-		"dateofbirth": "2001-09-22",
-		"gestationalage": "38 weeks",
-		"ethnicity": "Not Hispanic or Latino",
-		"race": "Asian",
-		"address": "404 Pine St, Onondaga, NY",
-		"language": "Korean",
-		"schooldistrict": "Onondaga Central School District"
-	},
-	{
-		"firstname": "Harper",
-		"lastname": "King",
-		"prefix": "Miss",
-		"suffix": "IV",
-		"dateofbirth": "2016-04-05",
-		"gestationalage": "39 weeks",
-		"ethnicity": "Not Hispanic or Latino",
-		"race": "Black or African American",
-		"address": "505 Oak Lane, Marcellus, NY",
-		"language": "Arabic",
-		"schooldistrict": "Marcellus Central School District"
-	},
-	{
-		"firstname": "Benjamin",
-		"lastname": "Gonzalez",
-		"prefix": "Mr.",
-		"suffix": "Esq.",
-		"dateofbirth": "2012-06-18",
-		"gestationalage": "37 weeks",
-		"ethnicity": "Hispanic or Latino",
-		"race": "White",
-		"address": "606 Elmwood St, Solvay, NY",
-		"language": "Italian",
-		"schooldistrict": "Solvay Union Free School District"
-	},
-	{
-		"firstname": "Evelyn",
-		"lastname": "Young",
-		"prefix": "Ms.",
-		"suffix": null,
-		"dateofbirth": "2018-01-08",
-		"gestationalage": "40 weeks",
-		"ethnicity": "Not Hispanic or Latino",
-		"race": "Black or African American",
-		"address": "707 Ash St, Syracuse, NY",
-		"language": "Swahili",
-		"schooldistrict": "Syracuse City School District"
-	},
-	{
-		"firstname": "Alexander",
-		"lastname": "Scott",
-		"prefix": "Mr.",
-		"suffix": "PhD",
-		"dateofbirth": "2015-11-13",
-		"gestationalage": "38 weeks",
-		"ethnicity": "Not Hispanic or Latino",
-		"race": "White",
-		"address": "808 Cedar Rd, Tully, NY",
-		"language": "German",
-		"schooldistrict": "Tully Central School District"
-	},
-	{
-		"firstname": "Grace",
-		"lastname": "Brown",
-		"prefix": "Miss",
-		"suffix": null,
-		"dateofbirth": "2003-02-19",
-		"gestationalage": "36 weeks",
-		"ethnicity": "Hispanic or Latino",
-		"race": "American Indian or Alaska Native",
-		"address": "909 Pinecrest Dr, Westhill, NY",
-		"language": "Hebrew",
-		"schooldistrict": "Westhill Central School District"
+		"schooldistrict": "Liverpool Central School District",
+		"status": "Awaiting Validation"
 	}
 ]

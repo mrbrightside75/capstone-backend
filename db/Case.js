@@ -126,6 +126,19 @@ const Case = (db) => {
 				"Westhill Central School District",
 			],
 		},
+		status: {
+			type: DataTypes.ENUM,
+			values: [
+				"Referral",
+				"Awaiting Validation",
+				"Validated",
+				"Assigned",
+				"Active",
+				"Awaiting Closure",
+				"Inactive",
+			],
+			defaultValue: "Referral", // Default to Referral when case is created
+		},
 	});
 };
 
