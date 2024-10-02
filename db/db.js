@@ -1,31 +1,25 @@
 import { Sequelize } from "sequelize";
 import CaseModel from "./Case.js";
 import ReferralModel from "./Referral.js";
+import ServiceCoordinatorModel from "./ServiceCoordinator.js" 
 import seedData from "./seedData.json" with {type: "json"};
-
-// process.env.DATABASE_URL
-/*
-
-1. process.env.DATABASE_URL === postgres://postgres:i5L9jcOJxzSUQlO@capstone-backend-little-water-8484-db.flycast:5432
-2. DATABASE_URL === undefined
-
-
-*/
-
+import serviceCoordinatorsSeedData from "./serviceCoordinatorsSeedData.json" with {type: "json"}; // Import the seed data for service coordinators
 
 let db;
 if (process.env.DATABASE_URL === undefined) {
-    console.log("Connected locally!");
-    db = new Sequelize("postgres://localhost:5432/capstone", {
-        logging: false,
-    }); 
+	console.log("Connected locally!");
+	db = new Sequelize("postgres://localhost:5432/capstone", {
+		logging: false,
+	});
 } else {
-    db = new Sequelize(process.env.DATABASE_URL, {
-        logging: false,
-    });
+	db = new Sequelize(process.env.DATABASE_URL, {
+		logging: false,
+	});
 }
+
 const Case = CaseModel(db);
 const Referral = ReferralModel(db);
+const ServiceCoordinator = ServiceCoordinatorModel(db); // Define the ServiceCoordinator model
 
 Case.hasMany(Referral, { foreignKey: "caseId", onDelete: "CASCADE" });
 Referral.belongsTo(Case, { foreignKey: "caseId" });
@@ -34,28 +28,48 @@ const connectToDB = async () => {
 	try {
 		await db.authenticate();
 		console.log("Connected to the DB");
-		await db.sync(); // Sync the database (adjust with `{alter: true}` if needed)
+		await db.sync({ alter: true }); // Sync the database with { alter: true }
 
-		// Loop through the seed data
+		// Seed Cases
 		for (const eachSeed of seedData) {
-			// Check if the case already exists in the database by first name, last name, and DOB
 			const existingCase = await Case.findOne({
 				where: {
 					firstname: eachSeed.firstname,
 					lastname: eachSeed.lastname,
-					dateofbirth: eachSeed.dateofbirth
-				}
+					dateofbirth: eachSeed.dateofbirth,
+				},
 			});
 
 			if (existingCase) {
-				// If the case already exists, log a message and skip insertion
 				console.log(
-					`Skipping case: ${eachSeed.firstname} ${eachSeed.lastname} - already exists in the database.`
+					`Skipping case: ${eachSeed.firstname} ${eachSeed.lastname} - already exists.`
 				);
 			} else {
-				// If the case does not exist, create a new case
 				await Case.create(eachSeed);
-				console.log(`Added case: ${eachSeed.firstname} ${eachSeed.lastname}`);
+				console.log(
+					`Added case: ${eachSeed.firstname} ${eachSeed.lastname}`
+				);
+			}
+		}
+
+		// Seed Service Coordinators
+		for (const coordinator of serviceCoordinatorsSeedData) {
+			const existingCoordinator = await ServiceCoordinator.findOne({
+				where: {
+					firstname: coordinator.firstname,
+					lastname: coordinator.lastname,
+				},
+			});
+
+			if (existingCoordinator) {
+				console.log(
+					`Skipping Service Coordinator: ${coordinator.firstname} ${coordinator.lastname} - already exists.`
+				);
+			} else {
+				await ServiceCoordinator.create(coordinator);
+				console.log(
+					`Added Service Coordinator: ${coordinator.firstname} ${coordinator.lastname}`
+				);
 			}
 		}
 	} catch (error) {
@@ -65,4 +79,4 @@ const connectToDB = async () => {
 };
 await connectToDB();
 
-export { db, Case, Referral};
+export { db, Case, Referral, ServiceCoordinator }; // Make sure to export ServiceCoordinator

@@ -139,6 +139,10 @@ const Case = (db) => {
 			],
 			defaultValue: "Referral", // Default to Referral when case is created
 		},
+		serviceCoordinatorId: {
+			type: DataTypes.INTEGER,
+			allowNull: true,
+		},
 	});
 };
 
