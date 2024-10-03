@@ -178,6 +178,19 @@ server.post("/referrals/:referralId/assign", async (req, res) => {
 		res.status(500).json({ error: "Internal server error" });
 	}
 });
+
+// Route to fetch all service coordinators
+server.get("/service-coordinators", async (req, res) => {
+	try {
+		const serviceCoordinators = await ServiceCoordinator.findAll(); // Assuming you have a ServiceCoordinator model
+		res.status(200).json(serviceCoordinators); // Send the list as JSON
+	} catch (error) {
+		console.error("Error fetching service coordinators:", error);
+
+		res.status(500).json({ error: "Internal server error" });
+	}
+});
+
 // Update route to assign a service coordinator to a case
 // Route to assign a service coordinator to a case and update the status
 // server.post("/cases/:caseId/assign", async (req, res) => {
