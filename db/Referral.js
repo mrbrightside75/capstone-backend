@@ -7,7 +7,7 @@ const Referral = (db) => {
 			autoIncrement: true,
 		},
 		referralDate: {
-			type: DataTypes.DATE,
+			type: DataTypes.DATEONLY,
 			allowNull: false,
 		},
 		referralAgency: {

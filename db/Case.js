@@ -50,10 +50,11 @@ const Case = (db) => {
 			],
 			allowNull: true,
 		},
-		dateofbirth: DataTypes.DATE,
+		dateofbirth: DataTypes.DATEONLY,
 		gestationalage: {
 			type: DataTypes.ENUM,
 			values: Array.from({ length: 42 }, (_, i) => `${i + 1} weeks`),
+			allowNull: true,
 		},
 		ethnicity: {
 			type: DataTypes.ENUM,
