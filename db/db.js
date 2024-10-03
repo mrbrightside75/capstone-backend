@@ -4,6 +4,8 @@ import ReferralModel from "./Referral.js";
 import ServiceCoordinatorModel from "./ServiceCoordinator.js" 
 import seedData from "./seedData.json" with {type: "json"};
 import serviceCoordinatorsSeedData from "./serviceCoordinatorsSeedData.json" with {type: "json"}; // Import the seed data for service coordinators
+import FileModel from "./File.js";
+
 
 let db;
 if (process.env.DATABASE_URL === undefined) {
@@ -16,13 +18,16 @@ if (process.env.DATABASE_URL === undefined) {
 		logging: false,
 	});
 }
-
+const File = FileModel(db);
 const Case = CaseModel(db);
 const Referral = ReferralModel(db);
 const ServiceCoordinator = ServiceCoordinatorModel(db); // Define the ServiceCoordinator model
 
 Case.hasMany(Referral, { foreignKey: "caseId", onDelete: "CASCADE" });
 Referral.belongsTo(Case, { foreignKey: "caseId" });
+
+Case.hasMany(File, { foreignKey: "caseId", onDelete: "CASCADE" });
+File.belongsTo(Case, { foreignKey: "caseId" }); // Link File to Case
 
 const connectToDB = async () => {
 	try {
@@ -79,4 +84,4 @@ const connectToDB = async () => {
 };
 await connectToDB();
 
-export { db, Case, Referral, ServiceCoordinator }; // Make sure to export ServiceCoordinator
+export { db, Case, Referral, ServiceCoordinator, File }; // Make sure to export ServiceCoordinator

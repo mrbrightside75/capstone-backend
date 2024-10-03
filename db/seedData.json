@@ -25,7 +25,7 @@
 		"address": "456 Oak St, Liverpool, NY",
 		"language": "Spanish",
 		"schooldistrict": "Liverpool Central School District",
-		"status": "Awaiting Validation"
+		"status": "Referral"
 	},
 	{
 		"firstname": "Emily",
@@ -39,7 +39,7 @@
 		"address": "789 Pine St, Baldwinsville, NY",
 		"language": "French",
 		"schooldistrict": "Baldwinsville Central School District",
-		"status": "Validated"
+		"status": "Referral"
 	},
 	{
 		"firstname": "Michael",
@@ -53,7 +53,7 @@
 		"address": "101 Maple Ave, Fayetteville, NY",
 		"language": "German",
 		"schooldistrict": "Fayetteville-Manlius Central School District",
-		"status": "Assigned"
+		"status": "Referral"
 	},
 	{
 		"firstname": "Sophia",
@@ -67,7 +67,7 @@
 		"address": "202 Birch St, East Syracuse, NY",
 		"language": "Chinese (Mandarin, Cantonese)",
 		"schooldistrict": "East Syracuse Minoa Central School District",
-		"status": "Active"
+		"status": "Referral"
 	},
 	{
 		"firstname": "Robert",
@@ -81,7 +81,7 @@
 		"address": "303 Elm St, North Syracuse, NY",
 		"language": "Italian",
 		"schooldistrict": "North Syracuse Central School District",
-		"status": "Awaiting Closure"
+		"status": "Referral"
 	},
 	{
 		"firstname": "Olivia",
@@ -95,7 +95,7 @@
 		"address": "404 Cedar St, Solvay, NY",
 		"language": "Vietnamese",
 		"schooldistrict": "Solvay Union Free School District",
-		"status": "Inactive"
+		"status": "Referral"
 	},
 	{
 		"firstname": "William",
@@ -123,7 +123,7 @@
 		"address": "606 Chestnut St, West Genesee, NY",
 		"language": "Japanese",
 		"schooldistrict": "West Genesee Central School District",
-		"status": "Awaiting Validation"
+		"status": "Referral"
 	},
 	{
 		"firstname": "James",
@@ -137,7 +137,7 @@
 		"address": "707 Spruce St, Westhill, NY",
 		"language": "Arabic",
 		"schooldistrict": "Westhill Central School District",
-		"status": "Validated"
+		"status": "Referral"
 	},
 	{
 		"firstname": "Ava",
@@ -151,7 +151,7 @@
 		"address": "14 Appleton St, Syracuse, NY",
 		"language": "English",
 		"schooldistrict": "Westhill Central School District",
-		"status": "Active"
+		"status": "Referral"
 	},
 	{
 		"firstname": "Liam",
@@ -165,7 +165,7 @@
 		"address": "91 Elm St, East Syracuse, NY",
 		"language": "Spanish",
 		"schooldistrict": "East Syracuse Minoa Central School District",
-		"status": "Assigned"
+		"status": "Referral"
 	},
 	{
 		"firstname": "Emily",
@@ -193,6 +193,6 @@
 		"address": "17 Oak St, Liverpool, NY",
 		"language": "Tagalog",
 		"schooldistrict": "Liverpool Central School District",
-		"status": "Awaiting Validation"
+		"status": "Referral"
 	}
 ]

@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
-import { db, Case, Referral, ServiceCoordinator } from "./db/db.js"; // Ensure Referral is imported if not already
+import { db, Case, Referral, ServiceCoordinator, File } from "./db/db.js";
+import { PDFDocument, StandardFonts } from "pdf-lib";
 
 const server = express();
 server.use(cors());
@@ -25,6 +26,7 @@ server.post("/cases", async (req, res) => {
 			address,
 			language,
 			schooldistrict,
+			status,
 		} = req.body;
 
 		// Create a new case in the database
@@ -40,6 +42,7 @@ server.post("/cases", async (req, res) => {
 			address,
 			language,
 			schooldistrict,
+			status,
 		});
 
 		// Send a success response
@@ -175,14 +178,160 @@ server.post("/referrals/:referralId/assign", async (req, res) => {
 		res.status(500).json({ error: "Internal server error" });
 	}
 });
+// Update route to assign a service coordinator to a case
+// Route to assign a service coordinator to a case and update the status
+// server.post("/cases/:caseId/assign", async (req, res) => {
+// 	try {
+// 		const { serviceCoordinatorId, status } = req.body; // Get serviceCoordinatorId and status from the request body
+// 		const { caseId } = req.params; // Get the caseId from the URL params
+
+// 		// Find the case by caseId
+// 		const caseToUpdate = await Case.findByPk(caseId);
+
+// 		if (!caseToUpdate) {
+// 			return res.status(404).json({ error: "Case not found" });
+// 		}
+
+// 		// Assign the service coordinator and update the status
+// 		caseToUpdate.serviceCoordinatorId = serviceCoordinatorId;
+// 		caseToUpdate.status = status || "Assigned"; // Default to "Assigned" if no status is provided
+// 		await caseToUpdate.save();
+
+// 		res.status(200).json({
+// 			message:
+// 				"Service Coordinator assigned and case status updated successfully.",
+// 		});
+// 	} catch (error) {
+// 		console.error("Error assigning service coordinator:", error);
+// 		res.status(500).json({ error: "Internal server error" });
+// 	}
+// });
+
+server.post("/cases/:caseId/assign", async (req, res) => {
+	try {
+		const { serviceCoordinatorId } = req.body;
+		const { caseId } = req.params;
+
+		// Find the case and the service coordinator
+		const caseToUpdate = await Case.findByPk(caseId);
+		const serviceCoordinator = await ServiceCoordinator.findByPk(
+			serviceCoordinatorId
+		);
+
+		if (!caseToUpdate) {
+			console.error("Case not found:", caseId);
+			return res.status(404).json({ error: "Case not found" });
+		}
+		if (!serviceCoordinator) {
+			console.error(
+				"Service Coordinator not found:",
+				serviceCoordinatorId
+			);
+			return res
+				.status(404)
+				.json({ error: "Service Coordinator not found" });
+		}
+
+		// Update the case with the assigned service coordinator
+		caseToUpdate.serviceCoordinatorId = serviceCoordinatorId;
+		caseToUpdate.status = "Assigned"; // Update case status
+		await caseToUpdate.save();
+
+		// Generate PDF (optional: remove it for now to debug the issue)
+		try {
+			const { firstname, lastname, address, language, ethnicity, race } =
+				caseToUpdate;
+
+			// Create PDF logic (simplified for debugging)
+			const pdfDoc = await PDFDocument.create();
+			const timesRomanFont = await pdfDoc.embedFont(
+				StandardFonts.TimesRoman
+			);
+			const page = pdfDoc.addPage([612, 792]);
+
+			page.drawText(`${firstname} ${lastname}`, {
+				x: 50,
+				y: 700,
+				size: 12,
+				font: timesRomanFont,
+			});
+			page.drawText(`${address}`, {
+				x: 50,
+				y: 680,
+				size: 12,
+				font: timesRomanFont,
+			});
+
+			const pdfBytes = await pdfDoc.save();
+
+			// Store the PDF as a file in the database, linked to the case
+			const newFile = await File.create({
+				name: `parent_letter_${firstname}_${lastname}.pdf`,
+				data: pdfBytes,
+				// Link the file to the case
+				caseId: caseId,
+			});
+
+			// Respond with success
+			return res.status(200).json({
+				message:
+					"Service Coordinator assigned and Parent Letter PDF generated successfully.",
+				file: newFile,
+			});
+		} catch (pdfError) {
+			console.error("Error generating PDF:", pdfError);
+			return res.status(500).json({ error: "Error generating PDF" });
+		}
+	} catch (error) {
+		console.error("Error assigning service coordinator:", error);
+		return res.status(500).json({ error: "Internal server error" });
+	}
+});
 
 // Route to fetch all service coordinators
-server.get("/service-coordinators", async (req, res) => {
+server.get("/cases/:caseId/files", async (req, res) => {
 	try {
-		const serviceCoordinators = await ServiceCoordinator.findAll(); // Assuming you have a ServiceCoordinator model
-		res.status(200).json(serviceCoordinators); // Send the list as JSON
+		const { caseId } = req.params;
+
+		// Find the files associated with the case
+		const files = await File.findAll({ where: { caseId } });
+
+		if (!files || files.length === 0) {
+			return res
+				.status(404)
+				.json({ error: "No files found for this case." });
+		}
+
+		// Return the files
+		res.status(200).json(files);
 	} catch (error) {
-		console.error("Error fetching service coordinators:", error);
+		console.error("Error fetching files:", error);
+		res.status(500).json({ error: "Internal server error" });
+	}
+});
+
+// Serve the PDF file from the database
+server.get("/get-pdf/:id", async (req, res) => {
+	try {
+		const fileId = req.params.id;
+
+		// Find the file by its primary key (ID)
+		const file = await File.findByPk(fileId);
+
+		if (!file) {
+			return res.status(404).json({ error: "File not found" });
+		}
+
+		// Set the content type to PDF
+		res.setHeader("Content-Type", "application/pdf");
+
+		// Set content disposition to 'inline' to display the PDF in the browser
+		res.setHeader("Content-Disposition", `inline; filename=${file.name}`);
+
+		// Send the PDF data as binary
+		res.send(file.data);
+	} catch (error) {
+		console.error("Error fetching the PDF:", error);
 		res.status(500).json({ error: "Internal server error" });
 	}
 });
